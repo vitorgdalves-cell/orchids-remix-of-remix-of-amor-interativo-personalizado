@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   basePath: "/orchids-remix-of-remix-of-remix-of-amor-interativo-personalizado",
   assetPrefix: "/orchids-remix-of-remix-of-remix-of-amor-interativo-personalizado",
   output: 'export',
-  
+
   images: {
     unoptimized: true,
     remotePatterns: [
