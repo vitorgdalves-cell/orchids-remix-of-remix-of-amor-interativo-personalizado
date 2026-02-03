@@ -1,36 +1,36 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 
-const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
+const LOADER = path.resolve(__dirname, "src/visual-edits/component-tagger-loader.js");
 
 const nextConfig: NextConfig = {
+  basePath: "/orchids-remix-of-remix-of-remix-of-amor-interativo-personalizado",
+  assetPrefix: "/orchids-remix-of-remix-of-remix-of-amor-interativo-personalizado",
+  output: 'export',
+  
   images: {
+    unoptimized: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-      {
-        protocol: 'http',
-        hostname: '**',
-      },
-    ],
+      { protocol: "https", hostname: "**" },
+      { protocol: "http", hostname: "**" }
+    ]
   },
-  outputFileTracingRoot: path.resolve(__dirname, '../../'),
+
   typescript: {
     ignoreBuildErrors: true,
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
-  turbopack: {
-    rules: {
-      "*.{jsx,tsx}": {
-        loaders: [LOADER]
-      }
-    }
-  }
+
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(js|jsx|ts|tsx)$/,
+      loader: LOADER,
+    });
+    return config;
+  },
 };
 
 export default nextConfig;
-// Orchids restart: 1769827456592
