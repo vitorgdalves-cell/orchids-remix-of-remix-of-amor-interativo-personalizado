@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import path from "node:path";
+import path from "path";
 
 const LOADER = path.resolve(__dirname, "src/visual-edits/component-tagger-loader.js");
 
@@ -17,21 +17,20 @@ const nextConfig: NextConfig = {
   },
 
   typescript: {
-    ignoreBuildErrors: true,
+      ignoreBuildErrors: true
   },
 
   eslint: {
-    ignoreDuringBuilds: true,
+  ignoreDuringBuilds: true
   },
 
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(js|jsx|ts|tsx)$/,
-      loader: LOADER,
+    loader: LOADER
     });
     return config;
-  },
+  }
 };
 
 export default nextConfig;
-};
